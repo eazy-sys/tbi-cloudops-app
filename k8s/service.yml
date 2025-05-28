@@ -10,7 +10,7 @@ spec:
   selector:
     app: ml-serving-app
   ports:
-    - name: http        # Required for ServiceMonitor to work!
+    - name: http      
       port: 8000
       targetPort: 8000
       nodePort: 30080
