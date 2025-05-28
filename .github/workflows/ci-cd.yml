@@ -23,10 +23,8 @@ jobs:
 
     - name: Run unit tests
       run: |
-        pytest tests/
+        PYTHONPATH=. pytest tests/
 
     - name: Build Docker image
       run: |
         docker build -t ml-serving-app ./serving
-
-    
