@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml-serving-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ml-serving-app
+  template:
+    metadata:
+      labels:
+        app: ml-serving-app
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: "/metrics"
+        prometheus.io/port: "8000"
+    spec:
+      containers:
+      - name: ml-serving-app
+        image: ml-serving-app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8000

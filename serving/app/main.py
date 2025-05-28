@@ -3,7 +3,13 @@ from pydantic import BaseModel
 import time
 from threading import Thread
 
+
+from prometheus_fastapi_instrumentator import Instrumentator
+
 app = FastAPI()
+
+
+Instrumentator().instrument(app).expose(app)
 
 state = {
     "status": "NOT_DEPLOYED",
